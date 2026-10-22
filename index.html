@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>能力速览</title>
+<title>Etherstrings 能力速览</title>
 <style>
 :root{--bg:#f4f3ef;--card:#fff;--ink:#1b1b1f;--sub:#5d5d66;--line:#e6e4dd;--accent:#ff5a1f;--accent-soft:#fff1ea;--chip:#f1f0eb;--todo:#fff6c7}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121214;--card:#1c1c20;--ink:#f2f2f4;--sub:#a0a0aa;--line:#2c2c32;--accent:#ff7a45;--accent-soft:#2a1d17;--chip:#26262b;--todo:#4a4115}}
@@ -21,9 +21,15 @@ h2{font-size:12px;letter-spacing:2px;color:var(--sub);font-weight:600;margin:26p
 .str div{background:var(--accent-soft);border-radius:12px;padding:10px}
 .str strong{display:block;font-size:14px;color:var(--accent)}
 .str span{font-size:12px;color:var(--sub);line-height:1.4;display:block;margin-top:4px}
-.work{border-left:3px solid var(--accent);padding-left:12px}
-.work .t{font-weight:700;font-size:15px}
-.work li{font-size:13.5px;color:var(--sub);list-style:none;margin-top:4px}
+.hero{background:var(--accent-soft);border-radius:14px;padding:16px}
+.hero .h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hero .t{font-weight:800;font-size:17px}
+.badge{background:var(--accent);color:#fff;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px}
+.hero .d{font-size:13px;color:var(--sub);margin-top:6px}
+.hero li{list-style:none;margin-top:10px;font-size:13.5px;line-height:1.5}
+.hero li b{display:block;font-size:14.5px}
+.hero li span{color:var(--sub)}
+.hero .chips span{background:var(--card)}
 .p{padding:12px 0;border-top:1px solid var(--line)}
 .p:first-of-type{border-top:0;padding-top:0}
 .p .n{font-weight:700;font-size:15px}
@@ -52,14 +58,17 @@ document.getElementById("card").innerHTML=`
 <p class="tag">${hl(d.tagline)}</p>
 <h2>我擅长</h2>
 <div class="str">${d.strengths.map(s=>`<div><strong>${t(s.title)}</strong><span>${t(s.desc)}</span></div>`).join("")}</div>
-<h2>主业 · ${t(d.work.company)}</h2>
-<div class="work"><div class="t">${t(d.work.title)}</div><ul>${d.work.points.map(p=>`<li>${t(p)}</li>`).join("")}</ul></div>
-<h2>业余独立做的</h2>
+<h2>代表作</h2>
+<div class="hero"><div class="h"><span class="t">${t(d.series.title)}</span><span class="badge">${t(d.series.badge)}</span></div>
+<p class="d">${t(d.series.desc)}</p>
+<ul>${d.series.items.map(i=>`<li><b>${t(i.name)}</b><span>${t(i.what)}</span></li>`).join("")}</ul>
+<div class="chips" style="margin-top:12px">${d.series.stack.map(s=>`<span>${t(s)}</span>`).join("")}</div></div>
+<h2>其他作品</h2>
 ${d.projects.map(p=>`<div class="p"><div class="n">${t(p.name)}</div><div class="w">${t(p.what)}</div><div class="f">${t(p.fact)}</div><div class="chips">${p.stack.map(s=>`<span>${t(s)}</span>`).join("")}</div></div>`).join("")}
 <p class="more">${t(d.more)}</p>
 <h2>适合交给我的事</h2>
 <ul class="offer">${d.offer.map(o=>`<li>${t(o)}</li>`).join("")}</ul>
-<div class="foot"><span>${t(d.contact)}</span><span>@${t(d.handle)}</span></div>`;
+<div class="foot"><span>${t(d.contact)}</span><span>欢迎聊</span></div>`;
 </script>
 </body>
 </html>

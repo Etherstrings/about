@@ -3,5 +3,5 @@
 cd "$(dirname "$0")"; mkdir -p out
 CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 "$CHROME" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
-  --force-device-scale-factor=2 --window-size=480,1500 --screenshot="$PWD/out/brief.png" "file://$PWD/index.html" 2>/dev/null
+  --force-device-scale-factor=2 --window-size=480,1560 --screenshot="$PWD/out/brief.png" "file://$PWD/index.html" 2>/dev/null
 echo "$PWD/out/brief.png"
